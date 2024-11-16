@@ -83,3 +83,43 @@ button {
   background-repeat: no-repeat;
   background-position: left center;
 }
+
+/* 定义整个表单的基本样式 */
+.login-form {
+  width: 300px; /* 设置表单宽度 */
+  margin: 50px auto; /* 水平居中，上下留出一定间距 */
+  padding: 20px; /* 内边距 */
+  border: 1px solid #ccc; /* 边框 */
+  border-radius: 5px; /* 圆角 */
+  background-color: #f9f9f9; /* 背景色 */
+}
+
+/* 定义输入框的样式 */
+.login-form input[type="password"] {
+  display: block; /* 块级元素，独占一行 */
+  width: 100%; /* 输入框宽度 */
+  padding: 10px; /* 内边距 */
+  margin-bottom: 15px; /* 下边距 */
+  border: 1px solid #ccc; /* 边框 */
+  border-radius: 3px; /* 圆角 */
+  font-size: 16px; /* 字体大小 */
+  box-sizing: border-box; /* 确保内边距和边框不会增加总宽度 */
+}
+
+/* 定义登录按钮的样式 */
+.login-form input[type="submit"] {
+  display: block; /* 块级元素，独占一行 */
+  width: 100%; /* 按钮宽度 */
+  padding: 10px; /* 内边距 */
+  border: none; /* 无边框 */
+  border-radius: 3px; /* 圆角 */
+  background-color: #007bff; /* 背景色 */
+  color: white; /* 文字颜色 */
+  font-size: 16px; /* 字体大小 */
+  cursor: pointer; /* 鼠标悬停时显示为手形 */
+}
+
+/* 登录按钮悬停时的样式 */
+.login-form input[type="submit"]:hover {
+  background-color: #0056b3; /* 更深的背景色 */
+}
