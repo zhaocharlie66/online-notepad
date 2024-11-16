@@ -1,4 +1,5 @@
 const express = require('express');
+const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const path = require('path');
 
@@ -11,6 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // 提供静态文件 (CSS)
 app.use(express.static(path.join(__dirname, 'public')));
+
+// 配置 favicon
+app.use(favicon(path.join(__dirname, 'public', 'image', 'favicon.png')));
 
 //渲染导航页
 app.get('/', (req, res) => {
