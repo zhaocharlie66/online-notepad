@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在线记事本</title>
+  <link rel="stylesheet" href="/css/style.css" id="theme-style">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 获取 textarea 元素
+      var textarea = document.getElementsByTagName('textarea')[0];
+
+      // 防抖函数
+      function debounce(func, wait) {
+        let timeout;
+        return function () {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => func.apply(this, arguments), wait);
+        };
+      }
+
+      // 监听 textarea 的 input 事件
+      textarea.addEventListener('input', debounce(save, 1000)); // 停止输入1秒后保存
+
+      // 捕获 Ctrl + S 事件
+      document.addEventListener('keydown', function (event) {
+        if (event.ctrlKey && event.key === 's' || event.key === 'S') {
+          save();
+          event.preventDefault(); // 阻止浏览器默认行为
+        }
+      });
+
+      function save() {
+        var text = textarea.value;
+        var id = window.location.pathname.split('/').pop(); // 获取当前页面 URL 中的 id
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/save/' + id); // 包含 id 的保存 URL
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send('note=' + encodeURIComponent(text));
+      }
+
+      // 切换主题
+      function toggleTheme() {
+        var link = document.getElementById('theme-style');
+        if (link.href.includes('style.css')) {
+          link.href = '/css/style_night.css';
+        } else {
+          link.href = '/css/style.css';
+        }
+      }
+
+      // 绑定主题切换按钮的点击事件
+      document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="note-container">
+      <div class="bar">
+        <a href="/note/1">1</a>
+        <a href="/note/2">2</a>
+        <a href="/note/3">3</a>
+        <a href="/note/4">4</a>
+        <a href="/note/5">5</a>
+        <a href="/note/6">6</a>
+        <a href="/note/7">7</a>
+        <a href="/note/8">8</a>
+        <button id="theme-toggle"></button>
+      </div>
+      <textarea name="note" id="content" rows="10" cols="30"><%= note %></textarea>
+    </div>
+  </div>
+</body>
+
+</html>
