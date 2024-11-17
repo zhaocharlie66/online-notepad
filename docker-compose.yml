@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+
+  online-notepad:
+    image: node:22.2.0
+    container_name: online-notepad
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+    environment:
+    # npm 镜像，请根据需求修改
+      - NPM_CONFIG_REGISTRY=https://registry.npmmirror.com
+    command: |
+      bash -c "
+        npm install && 
+        node app.js
+      "
+    ports:
+      - "13000:3000"
+    restart: always
