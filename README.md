@@ -52,10 +52,6 @@ node app.js
 - [Express-session](https://github.com/expressjs/session)
 - [Server-favicon](https://github.com/expressjs/serve-favicon)
 
-### 贡献者
-
-请阅读**CONTRIBUTING.md** 查阅为该项目做出贡献的开发者。
-
 ### 版本控制
 
 该项目使用Git进行版本管理。您可以在repository参看当前可用版本。
