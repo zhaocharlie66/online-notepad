@@ -3,6 +3,7 @@ body {
     background-color: #1a1a1a; /* 暗色背景 */
     margin: 0;
     padding: 0;
+    transition: background-color 0.3s ease;
 }
 
 .container {
@@ -19,6 +20,7 @@ body {
     height: 100%;
     border: 1px solid #333; /* 暗色边框 */
     box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
 
 .bar {
@@ -27,18 +29,23 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 40px;
+    height: 50px;
     background-color: #222; /* 暗色背景 */
     border-bottom: 1px solid #333; /* 暗色边框 */
     padding: 10px;
     box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
 
 .bar a {
+    padding: 5px 10px;
+    margin-right: 10px;
+    background-color: #444;
+    color: #ccc;
     text-decoration: none;
-    color: #ccc; /* 浅色文字 */
-    padding-right: 10px;
-}
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
 
 .search-box {
     width: 150px;

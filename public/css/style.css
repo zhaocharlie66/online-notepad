@@ -3,6 +3,7 @@ body {
   background-color: #f4f4f4;
   margin: 0;
   padding: 0;
+  transition: background-color 0.3s ease;
 }
 
 .container {
@@ -19,6 +20,7 @@ body {
   height: 100%;
   border: 1px solid #ddd;
   box-sizing: border-box;
+  transition: background-color 0.3s ease;
 }
 
 .bar {
@@ -27,19 +29,28 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: 40px;
+  height: 50px;
   background-color: #fff;
   border-bottom: 1px solid #ddd;
   padding: 10px;
   box-sizing: border-box;
+  transition: background-color 0.3s ease;
 }
 
 .bar a {
-  text-decoration: none;
+  padding: 5px 10px;
+  margin-right: 10px;
+  background-color: #f0f0f0;
   color: #333;
-  padding-right: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
+.bar a.active {
+  background-color: #ffcd32;
+  color: #fff;
+}
 
 .search-box {
   width: 150px; /* 根据需要调整输入框的宽度 */
@@ -113,7 +124,7 @@ button {
   padding: 10px; /* 内边距 */
   border: none; /* 无边框 */
   border-radius: 3px; /* 圆角 */
-  background-color: #007bff; /* 背景色 */
+  background-color: #ffcd32; /* 背景色 */
   color: white; /* 文字颜色 */
   font-size: 16px; /* 字体大小 */
   cursor: pointer; /* 鼠标悬停时显示为手形 */

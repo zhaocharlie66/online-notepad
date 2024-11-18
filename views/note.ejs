@@ -7,7 +7,30 @@
   <title>在线记事本</title>
   <link rel="stylesheet" href="/css/style.css" id="theme-style">
   <script>
+    // (function () {
+    //   var link = document.getElementById('theme-style');
+    //   var savedTheme = localStorage.getItem('theme');
+    //   if (savedTheme === 'dark') {
+    //     link.href = '/css/style_night.css';
+    //   } else {
+    //     link.href = '/css/style.css';
+    //   }
+    // })();
+
     document.addEventListener('DOMContentLoaded', function () {
+      // 获取当前页码
+      var currentPage = window.location.pathname.split('/').pop(); // 提取页码
+      var links = document.querySelectorAll('.bar a'); // 选择 .bar 中的所有链接
+
+      // 遍历链接，设置 active 类
+      links.forEach(function (link) {
+        if (link.getAttribute('href').endsWith('/' + currentPage)) {
+          link.classList.add('active'); // 添加 .active 类
+        } else {
+          link.classList.remove('active'); // 确保其他链接没有 .active 类
+        }
+      });
+      
       // 获取 textarea 元素
       var textarea = document.getElementsByTagName('textarea')[0];
 
@@ -40,18 +63,20 @@
         xhr.send('note=' + encodeURIComponent(text));
       }
 
-      // 切换主题
-      function toggleTheme() {
-        var link = document.getElementById('theme-style');
-        if (link.href.includes('style.css')) {
-          link.href = '/css/style_night.css';
-        } else {
-          link.href = '/css/style.css';
-        }
-      }
+      // // 切换主题
+      // function toggleTheme() {
+      //   var link = document.getElementById('theme-style');
+      //   if (link.href.includes('style.css')) {
+      //     link.href = '/css/style_night.css';
+      //     localStorage.setItem('theme', 'dark'); // 保存主题为暗色模式
+      //   } else {
+      //     link.href = '/css/style.css';
+      //     localStorage.setItem('theme', 'light'); // 保存主题为亮色模式
+      //   }
+      // }
 
-      // 绑定主题切换按钮的点击事件
-      document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+      // // 绑定主题切换按钮的点击事件
+      // document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
     });
   </script>
 </head>
@@ -68,7 +93,7 @@
         <a href="/note/6">6</a>
         <a href="/note/7">7</a>
         <a href="/note/8">8</a>
-        <button id="theme-toggle"></button>
+        <!-- <button id="theme-toggle"></button> -->
       </div>
       <textarea name="note" id="content" rows="10" cols="30"><%= note %></textarea>
     </div>
