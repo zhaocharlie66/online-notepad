@@ -51,6 +51,7 @@ node app.js
 - [Express.js](https://expressjs.com)
 - [Express-session](https://github.com/expressjs/session)
 - [Server-favicon](https://github.com/expressjs/serve-favicon)
+- [Marked.js](https://github.com/markedjs/marked)
 
 ### 版本控制
 
