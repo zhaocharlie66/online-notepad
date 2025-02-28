@@ -8,10 +8,20 @@ body {
 
 .container {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+}
+
+@media (min-width: 769px) {
+  .container {
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    left: 20px;
+  }
 }
 
 .note-container {
@@ -21,6 +31,7 @@ body {
   border: 1px solid #ddd;
   box-sizing: border-box;
   transition: background-color 0.3s ease;
+  background-color: #fff;
 }
 
 .bar {
@@ -35,16 +46,33 @@ body {
   padding: 10px;
   box-sizing: border-box;
   transition: background-color 0.3s ease;
+  align-items: center;
+  z-index: 10;
+  overflow-x: auto;
 }
 
 .bar a {
   padding: 5px 10px;
-  margin-right: 10px;
+  margin-right: 8px;
   background-color: #f0f0f0;
   color: #333;
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.bar button {
+  height: 28px;
+  margin-left: 4px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
 }
 
 .bar a.active {
@@ -52,80 +80,204 @@ body {
   color: #fff;
 }
 
-.search-box {
-  width: 150px; /* 根据需要调整输入框的宽度 */
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+#toggle-view {
+  width: auto;
+  padding: 0 8px;
 }
 
-#content {
-  /* 清除原有样式 */
-  border:none;
-	outline: none;
-	resize: none;
-  
+.menu-toggle-btn {
+  display: none;
+  font-size: 20px;
+  background: none;
+  border: none;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.editor-container {
+  display: flex;
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.editor-container.editor-only #preview {
+  display: none;
+}
+
+.editor-container.editor-only #editor {
+  width: 100%;
+}
+
+.editor-container.preview-only #editor {
+  display: none;
+}
+
+.editor-container.preview-only #preview {
+  width: 100%;
+}
+
+#editor {
+  width: 50%;
+  height: 100%;
   margin: 0;
   padding: 20px;
-  padding-top: 60px;
-  /* 调整顶部内边距以避免与 .bar 重叠 */
-  overflow-y: auto;
-  resize: none;
-  width: 100%;
-  height: 100%;
   box-sizing: border-box;
+  border: none;
   outline: none;
-  background-color: transparent;
-  font-family: inherit;
+  resize: none;
+  overflow-y: auto;
+  font-family: 'Consolas', monospace;
   font-size: 16px;
+  line-height: 1.5;
   color: #333;
+  background-color: #fafafa;
+  border-right: 1px solid #ddd;
 }
 
-button {
-  /* 基本样式 */
+.preview-pane {
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+/* 移动设备优化 */
+@media (max-width: 768px) {
+  .menu-toggle-btn {
+    display: block;
+  }
+  
+  #editor, .preview-pane {
+    font-size: 14px;
+    padding: 15px;
+  }
+  
+  .bar {
+    padding: 5px 10px;
+  }
+}
+
+/* Markdown 预览样式 */
+.preview-pane h1 {
+  border-bottom: 2px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+
+.preview-pane h2 {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+
+.preview-pane blockquote {
+  border-left: 4px solid #dfe2e5;
+  color: #6a737d;
+  padding: 0 1em;
+  margin: 0;
+}
+
+.preview-pane pre {
+  background-color: #f6f8fa;
+  border-radius: 3px;
+  padding: 16px;
+  overflow: auto;
+}
+
+.preview-pane code {
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 3px;
+  font-family: 'Consolas', monospace;
+  padding: 0.2em 0.4em;
+}
+
+.preview-pane pre code {
   background-color: transparent;
+  padding: 0;
+}
+
+.preview-pane table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 15px 0;
+  overflow-x: auto;
+  display: block;
+}
+
+.preview-pane table th, 
+.preview-pane table td {
+  border: 1px solid #dfe2e5;
+  padding: 8px 12px;
+}
+
+.preview-pane table th {
+  background-color: #f6f8fa;
+}
+
+.preview-pane img {
+  max-width: 100%;
+}
+
+.preview-pane a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.preview-pane a:hover {
+  text-decoration: underline;
+}
+
+.login-form {
+  width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.login-form input[type="password"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.login-form input[type="submit"] {
+  display: block;
+  width: 100%;
   padding: 10px;
   border: none;
+  border-radius: 3px;
+  background-color: #ffcd32;
+  color: white;
+  font-size: 16px;
   cursor: pointer;
-  margin-left: 10px;
-
-  /* SVG 图标 */
-  background-image: url('/svg/brightness-high-fill.svg');
-  background-repeat: no-repeat;
-  background-position: left center;
 }
 
-/* 定义整个表单的基本样式 */
-.login-form {
-  width: 300px; /* 设置表单宽度 */
-  margin: 50px auto; /* 水平居中，上下留出一定间距 */
-  padding: 20px; /* 内边距 */
-  border: 1px solid #ccc; /* 边框 */
-  border-radius: 5px; /* 圆角 */
-  background-color: #f9f9f9; /* 背景色 */
-}
-
-/* 定义输入框的样式 */
-.login-form input[type="password"] {
-  display: block; /* 块级元素，独占一行 */
-  width: 100%; /* 输入框宽度 */
-  padding: 10px; /* 内边距 */
-  margin-bottom: 15px; /* 下边距 */
-  border: 1px solid #ccc; /* 边框 */
-  border-radius: 3px; /* 圆角 */
-  font-size: 16px; /* 字体大小 */
-  box-sizing: border-box; /* 确保内边距和边框不会增加总宽度 */
-}
-
-/* 定义登录按钮的样式 */
-.login-form input[type="submit"] {
-  display: block; /* 块级元素，独占一行 */
-  width: 100%; /* 按钮宽度 */
-  padding: 10px; /* 内边距 */
-  border: none; /* 无边框 */
-  border-radius: 3px; /* 圆角 */
-  background-color: #ffcd32; /* 背景色 */
-  color: white; /* 文字颜色 */
-  font-size: 16px; /* 字体大小 */
-  cursor: pointer; /* 鼠标悬停时显示为手形 */
+/* 为用户添加的媒体查询，确保在非常小的屏幕上也保持可用性 */
+@media (max-width: 480px) {
+  
+  #toggle-view {
+    padding: 0 5px;
+    font-size: 12px;
+  }
+  
+  .bar {
+    height: 45px;
+  }
+  
+  .editor-container {
+    top: 45px;
+  }
 }
