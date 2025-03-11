@@ -25,7 +25,7 @@ app.use(session({
 }));
 
 // 统一密码
-const correctPassword = 'password';
+const correctPassword = process.env.PASSWORD || 'password';
 
 // 渲染登录页面
 app.get('/login', (req, res) => {
