@@ -8,3 +8,5 @@ services:
     volumes:
       - ./data:/usr/src/app/notes
     restart: always
+    environment:
+      - PASSWORD=${PASSWORD:-password}
