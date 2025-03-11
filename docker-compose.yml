@@ -6,7 +6,7 @@ services:
     ports:
       - "13000:3000"
     volumes:
-      - ./data:/usr/src/app/notes
+      - ./data:/home/app/notes
     restart: always
     environment:
       - PASSWORD=${PASSWORD:-password}

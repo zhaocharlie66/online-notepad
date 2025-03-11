@@ -2,7 +2,7 @@
 FROM node:22.2.0-alpine
 
 # 设置工作目录
-WORKDIR /usr/src/app
+WORKDIR /home/app
 
 # 复制package.json和package-lock.json
 COPY package*.json ./
