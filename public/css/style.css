@@ -265,21 +265,6 @@ body {
   cursor: pointer;
 }
 
-.remember-me {
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-}
-.remember-me input[type="checkbox"] {
-  margin-right: 8px;
-  cursor: pointer;
-}
-.remember-me label {
-  cursor: pointer;
-  color: #666;
-}
-
 /* 为用户添加的媒体查询，确保在非常小的屏幕上也保持可用性 */
 @media (max-width: 480px) {
   
