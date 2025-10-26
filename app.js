@@ -7,7 +7,7 @@ const path = require('path');
 const crypto = require('crypto');
 
 const app = express();
-const port = 3000;
+const port = 8080;
 const fs = require('fs');
 
 // 使用 body-parser 解析 POST 请求的 body
